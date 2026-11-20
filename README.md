@@ -39,21 +39,19 @@ Built and published by **[Oğuz Tonyalı](https://github.com/Zodomik)**. This re
 | Purchases | StoreKit 2, RevenueCat | Consumable token purchases, subscriptions and restoration. |
 | Backend | TypeScript, NestJS, Prisma, PostgreSQL | Content, accounts, reading progress and chapter access. |
 
-## Engineering highlights
+## Implementation notes
 
-### A reader with its own interaction model
+Native SwiftUI/UIKit client; modular NestJS API; PostgreSQL through Prisma; chapter JSON cache on the device.
 
-Reading controls, typography, chapter navigation and cached content are separated from discovery and account flows. SwiftUI works alongside UIKit for native reading interactions.
+- Story-graph DFS checks for cycles and unreachable nodes.
+- Transactional choice progression with request IDs and expected-node checks.
+- One unlock per visible interactive chapter, even when it has alternative scenes.
 
-### Choices as application state
-
-The interactive reader handles decisions and story progression alongside the conventional chapter reader. This gives the same product room for both linear and branching fiction.
-
-### A complete product boundary
-
-The native client connects to a typed server and relational data model. Authentication, chapter access and purchase handling are separate responsibilities rather than screen-level concerns.
-
-→ **[Explore the architecture and design decisions](docs/ENGINEERING.md)**
+| Read more | What is covered |
+| --- | --- |
+| [Architecture and frameworks](docs/ENGINEERING.md) | Runtime components, backend structure and framework responsibilities |
+| [Database and local data](docs/DATA_MODEL.md) | Entities, relationships, constraints and persistence choices |
+| [Algorithms and implementation choices](docs/ALGORITHMS.md) | Calculations, example flows and the limits of each approach |
 
 ## Try the product
 
